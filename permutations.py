@@ -15,10 +15,10 @@ def minimal_perm_str(symbols, n):
 	# avoiding edge cases
 	assert len(symbols) > 0
 	assert n > 0
-	symbols = list(dict.fromkeys(symbols))	# no duplicated symbols
+	symbols = list(dict.fromkeys(symbols))		# no duplicated symbols
 
 	# start with n times the last symbol (e.g. n=3, [A,B,C] => "CCC")
-	out = symbols[-1]*n 			# this variable contains the str we will return
+	out = symbols[-1]*n 				# this variable contains the str we will return
 
 	# calculate final length of out
 	final = minimal_perm_length(symbols, n)
@@ -27,11 +27,11 @@ def minimal_perm_str(symbols, n):
 	while len(out) < final:
 		last = out[-n+1:]			# grab last n-1 symbols from out
 		for c in symbols:			# try each symbol in ascending order
-			if last+c not in out:	# check if appending c would make a new permutation
-				out += c  			# if so, append c
-				break				# break for-loop = next while-loop iteration
+			if last+c not in out:		# check if appending c would make a new permutation
+				out += c  		# if so, append c
+				break			# break for-loop = next while-loop iteration
 	
-	return out						# return permutations string
+	return out					# return permutations string
 
 # main function for testing
 symbols = ['A', 'B', 'C']
